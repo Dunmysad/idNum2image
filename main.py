@@ -3,8 +3,5 @@ import pandas as pd
 
 idNums = pd.read_excel(io=r'idNums.xlsx', usecols='A')
 
-print(idNums.to_dict()['身份证号'])
-
 for i in idNums.to_dict()['身份证号']:
     idNum2image.idNum2image(idNums.to_dict()['身份证号'][i])
-

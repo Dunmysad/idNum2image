@@ -3,7 +3,7 @@ import requests
 from html2image import Html2Image
 
 
-
+r = re.compile('[\u4e00-\u9fa5]+')
 def idNum2image(idNum):
     url = 'https://xxapp-api.ziyunzhihui.com/app-server/nucleicAcidResult/findResultEs'
 
@@ -17,12 +17,13 @@ def idNum2image(idNum):
 
     resType = {0: '阴性'}
 
+
     res = requests.post(url, headers=headers, data=data).json()['data'][0]
 
-    print(res['name'], res['idNum'], res['reportDate'], res['samplingTime'], res['sampleNumber'], res['detectionMechanism'], resType[res['resultType']])
+    print(res['name'], res['idNum'], res['samplingTime'], res['reportDate'], res['sampleNumber'], r.findall(res['detectionMechanism'])[0], resType[res['resultType']])
 
 
-    r = re.compile('[\u4e00-\u9fa5]+')
+    
     
     hti = Html2Image()
 
@@ -449,7 +450,7 @@ def idNum2image(idNum):
                 <div class="info"><span>检测机构</span><span>{}</span></div>
                 <div class="info last"><span>检测结果</span><span class="yin">{}</span></div>
 
-    </body></html>""".format(res['name'], res['idNum'], res['reportDate'], res['samplingTime'], res['sampleNumber'], r.findall(res['detectionMechanism'])[0], resType[res['resultType']])
+    </body></html>""".format(res['name'], res['idNum'], res['samplingTime'], res['reportDate'], res['sampleNumber'], r.findall(res['detectionMechanism'])[0], resType[res['resultType']])
 
     name = res['name']
     time = res['samplingTime'].split(' ')[0]
