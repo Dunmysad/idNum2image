@@ -18,4 +18,4 @@ pip install -r requirements.txt
 
 运行`main.py`
 
-![截图](attachment:9e13895537213609ddcf32ff8ed52bc0)
+![截图](photo.png "运行结果示意图")
