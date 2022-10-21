@@ -11,6 +11,9 @@ def main(idNums, dateTime):
         if datetime.strptime(dateTime, "%Y-%m-%d") == datetime.strptime(res['samplingTime'].split(' ')[0], "%Y-%m-%d"):
             html2img.html2image(res)
             print(f"{res['name']} {dateTime} √")
+        elif str(datetime.today().strftime("%Y-%m-%d")) == res['samplingTime'].split(' ')[0]:
+            html2img.html2image(res)
+            print(f"{res['name']} {res['samplingTime'].split(' ')[0]} √")
         else:
             print(f"{res['name']} {dateTime} x")
 
