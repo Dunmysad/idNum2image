@@ -1,8 +1,6 @@
 import idNum2image
 import html2img
 import pandas as pd
-from datetime import datetime
-from jsonsearch import JsonSearch
 
 idNums = pd.read_excel(io=r'idNums.xlsx', usecols='A')
 
