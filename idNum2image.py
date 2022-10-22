@@ -21,11 +21,10 @@ def idNum2image(idNum):
     }
 
     try:
-        res = requests.post(url, headers=headers, data=data, proxies=proxies).json()['data'][0]
+        res = requests.post(url, headers=headers, data=data, proxies=proxies).json()
         # print(res['name'], res['idNum'], res['samplingTime'], res['reportDate'], res['sampleNumber'], r.findall(res['detectionMechanism'])[0], resType[res['resultType']])
         return res
     except Exception as e:
         print(e)
-
     
    
